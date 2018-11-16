@@ -4,7 +4,9 @@ version = "0.1.0"
 authors = ["Phoenix <kahlo.phoenix@gmail.com>"]
 description = "Spatial prioritization for smartpool using manhattan trees."
 readme = "README.md"
-repository = 
+repository = "https://github.com/gretchenfrage/smartpool-spatial"
+categories = ["concurrency", "data-structures"]
+license = "MIT"
 
 [dependencies]
 smartpool = "0.1.0"
