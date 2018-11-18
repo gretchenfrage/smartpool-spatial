@@ -1,6 +1,6 @@
 [package]
 name = "smartpool-spatial"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Phoenix <kahlo.phoenix@gmail.com>"]
 description = "Spatial prioritization for smartpool using manhattan trees."
 readme = "README.md"
@@ -9,7 +9,7 @@ categories = ["concurrency", "data-structures"]
 license = "MIT"
 
 [dependencies]
-smartpool = "0.2.0"
+smartpool = "0.2.1"
 manhattan-tree = "0.1.1"
 atomic = "0.4.1"
 
