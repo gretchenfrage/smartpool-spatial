@@ -1,6 +1,4 @@
 
-#![feature(duration_as_u128)]
-
 extern crate smartpool;
 extern crate atomic;
 #[cfg(test)]
