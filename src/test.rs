@@ -78,19 +78,21 @@ fn test() {
     let atomic = Atomic::new(0usize);
     let timer = Stopwatch::start_new();
     for batch in 0..BATCHES {
-        scoped(|scope| {
-            for _ in 0..BATCH_SIZE {
-                let op = scope.work(|| {
-                    atomic.fetch_add(1, Ordering::SeqCst);
-                });
-                let pos = [
-                    rng.gen::<u64>() / 16,
-                    rng.gen::<u64>() / 16,
-                    rng.gen::<u64>() / 16,
-                ];
-                pool.pool.spatial.exec(op, pos);
-            }
-        });
+        unsafe {
+            scoped(|scope| {
+                for _ in 0..BATCH_SIZE {
+                    let op = scope.work(|| {
+                        atomic.fetch_add(1, Ordering::SeqCst);
+                    });
+                    let pos = [
+                        rng.gen::<u64>() / 16,
+                        rng.gen::<u64>() / 16,
+                        rng.gen::<u64>() / 16,
+                    ];
+                    pool.pool.spatial.exec(op, pos);
+                }
+            });
+        }
         info!("did batch {}", batch);
     }
     let elapsed = timer.elapsed().as_nanos();
